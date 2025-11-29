@@ -1,9 +1,7 @@
 # Complete CI/CD with Terraform and AWS
 
-[![Watch Complete Tutorial](https://img.youtube.com/vi/5sZAx2ylsOo/0.jpg)](https://www.youtube.com/watch?v=5sZAx2ylsOo)
-
-
 ## Technologies:
+
 - Terraform
 - Github Actions
 - Docker
@@ -12,25 +10,26 @@
 - AWS S3
 - AWS ECR
 
-
 ## Tasks:
 
 - Get access id, secret id from AWS
 - Develop a simple nodejs app
+
 ```js
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
 
-app.get("/",(req,res)=>{
-    res.send("Service is up and running")
-})
+app.get("/", (req, res) => {
+  res.send("Service is up and running");
+});
 
-app.listen(8080,()=>{
-    console.log("Server is up")
-})
+app.listen(8080, () => {
+  console.log("Server is up");
+});
 ```
 
 - Write Dockerfile for Simple Application
+
 ```Dockerfile
 FROM node:14
 WORKDIR /user/app
@@ -59,19 +58,20 @@ env:
   PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
   AWS_REGION: us-east-1
 ```
+
 - Setup backend for S3 bucket with terraform init
 
 ```yml
-    - name: checkout repo
-      uses: actions/checkout@v2
-    - name: setup terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_wrapper: false
-    - name: Terraform Init
-      id: init
-      run: terraform init -backend-config="bucket=$TF_STATE_BUCKET_NAME" -backend-config="region=us-east-1"
-      working-directory: ./terraform
+- name: checkout repo
+  uses: actions/checkout@v2
+- name: setup terraform
+  uses: hashicorp/setup-terraform@v1
+  with:
+    terraform_wrapper: false
+- name: Terraform Init
+  id: init
+  run: terraform init -backend-config="bucket=$TF_STATE_BUCKET_NAME" -backend-config="region=us-east-1"
+  working-directory: ./terraform
 ```
 
 - Pass tf variables with Terraform plan
@@ -111,6 +111,7 @@ env:
 ```
 
 - Authenticate ECR
+
 ```yml
 - name: Login to AWS ECR
   id: login-ecr
@@ -162,4 +163,3 @@ env:
       sudo docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
       sudo docker run -d --name myappcontainer -p 80:8080 $REGISTRY/$REPOSITORY:$IMAGE_TAG
 ```
-

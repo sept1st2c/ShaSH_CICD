@@ -6,6 +6,8 @@
 - Github Actions
 - Docker
 - Node.js
+- React
+- Express
 - AWS EC2
 - AWS S3
 - AWS ECR

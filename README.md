@@ -1,9 +1,7 @@
 ---
-
 # Complete CI/CD with Terraform and AWS
 
 This project is a small but realistic CI/CD setup that takes a simple Node.js service, builds it into a Docker image, provisions AWS infrastructure with Terraform, and deploys the container on an EC2 instance using GitHub Actions. It is meant to be easy to understand, reproducible from scratch, and reusable for other apps with minimal changes.[^1][^2]
-
 ---
 
 ## Technologies
@@ -257,28 +255,3 @@ This setup is intentionally generic so you can reuse it in different scenarios:
   Instead of EC2, you could adapt the Terraform and deployment steps to target ECS or EKS later while keeping the GitHub Actions structure (build → push image → deploy) the same.[^10][^5]
 
 Because everything is driven by code (Terraform, Dockerfile, and workflow YAML), this repository can act as a template for many AWS-based CI/CD setups with only a few variable changes.
-<span style="display:none">[^11][^12][^13][^14][^15][^16][^17][^18][^19][^20][^21]</span>
-
-<div align="center">⁂</div>
-
-[^1]: https://spacelift.io/blog/github-actions-terraform
-[^2]: https://github.com/sept1st2c/ShaSH_CICD
-[^3]: https://developer.hashicorp.com/terraform/tutorials/automation/github-actions
-[^4]: https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/create-a-ci-cd-pipeline-to-validate-terraform-configurations-by-using-aws-codepipeline.html
-[^5]: https://registry.terraform.io/modules/cloudposse/cicd/aws/latest
-[^6]: https://cicube.io/workflow-hub/hashicorp-setup-terraform/
-[^7]: https://github.com/hashicorp/setup-terraform
-[^8]: https://controlmonkey.io/blog/terraform-ci-cd-pipeline-aws/
-[^9]: https://github.com/appleboy/ssh-action
-[^10]: https://github.com/cloudposse/terraform-aws-cicd
-[^11]: https://github.com/vikashishere
-[^12]: https://github.com/darjidhruv26/AWS-CICD-Pipeline
-[^13]: https://gist.github.com/0cb4841234d191431cd8
-[^14]: https://github.com/appleboy/scp-action
-[^15]: https://github.com/marketplace/actions/ssh-remote-commands
-[^16]: https://dev.to/jzmt/how-i-built-a-terraform-cicd-pipeline-on-aws-with-github-actions-4o5f
-[^17]: https://stackoverflow.com/questions/68132791/git-using-actions-checkoutv2-instead-of-appleboy-ssh-actionmaster-to-clone-r
-[^18]: https://www.youtube.com/watch?v=5rvdMcf6ix0
-[^19]: https://blog.benoitblanchon.fr/github-action-run-ssh-commands/
-[^20]: https://www.env0.com/blog/terraform-github-actions
-[^21]: https://faun.pub/setting-up-a-ci-cd-pipeline-with-terraform-cloud-github-and-aws-68a11427349d
